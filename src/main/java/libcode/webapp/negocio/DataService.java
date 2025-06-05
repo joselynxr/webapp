@@ -25,7 +25,7 @@ public class DataService {
     
     public List<Alumno> getAlumnos(){
         
-        Query query = entityManager.createQuery("SELECT e FROM Alunmo e ORDER BY e.id ASC");
+        Query query = entityManager.createQuery("SELECT e FROM Alumno e ORDER BY e.id ASC");
         List<Alumno> alumnos = query.getResultList();
         return alumnos;
         
