@@ -21,6 +21,9 @@ import libcode.webapp.negocio.DataService;
 @RequestScoped
 public class indexController {
     List<Alumno> alumnosList = new ArrayList<>();
+    
+    private Alumno alumno = new Alumno();
+    
     @EJB DataService servicio;
     
     @PostConstruct
@@ -35,5 +38,14 @@ public class indexController {
     public void setAlumnosList(List<Alumno> alumnosList) {
         this.alumnosList = alumnosList;
     }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
+    
     
 }
