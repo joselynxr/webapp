@@ -3,53 +3,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      
-      
-      <h:head
       xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        
-        <p:card>
-        <f:view>
-            <h:form id="alumnoForm">
-                <h:inputHidden id="id" value="#{indexController.alumno.id}"/>  
-                <h:outputText value="Nombre"/>
-                <h:inputText id="nombre" value="#{indexController.alumno.nombre}" />
-                
-                <h:outputText value="Carnet"/>
-                <h:inputText id="carnet" value="#{indexController.alumno.carnet}" />
-                
-                <h:commandButton value ="Guardar" actionListener="#{indexController.guardarAlumno}" />
-            </h:form>
-        </f:view>
-            </p:card>
 
-        
-        Listado de Alumnos<f:view>
+        <p:card style="margin: 5% 5% 5% 5%">
+            <f:facet name="title">
+                Formulario de Alumno
+            </f:facet>
+            <f:view>
+                <h:form id="alumnoForm">
+                    <h:inputHidden id="id" value="#{indexController.alumno.id}"/>  
+                    <p:outputLabel value="Nombre"/>
+                    <p:inputText id="nombre" value="#{indexController.alumno.nombre}" />
+
+                    <p:outputLabel   value="Carnet"/>
+                    <p:inputText id="carnet" value="#{indexController.alumno.carnet}" />
+
+                    <p:commandButton value ="Guardar" actionListener="#{indexController.guardarAlumno}" />
+                </h:form>
+            </f:view>
+        </p:card>
+
+        <p:card style="margin: 5% 5% 5% 5%">
+            <h1>Listado de Alumnos</h1>
             <h:form>
-                <h:dataTable border="1" value="#{indexController.alumnosList}" var="alumno">
-                    <h:column>
+                <p:dataTable value="#{indexController.alumnosList}" var="alumno">
+                    <p:column>
                         <f:facet name="header">ID</f:facet>
                         <span>#{alumno.id}</span>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">Nombre</f:facet>
                         <span>#{alumno.nombre}</span>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">Carnet</f:facet>
                         <span>#{alumno.carnet}</span>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">Opciones</f:facet>
-                        <h:commandButton value ="Editar" actionListener="#{indexController.llenarFormEditar(alumno)}" />
-                        <h:commandButton value ="Eliminar" actionListener="#{indexController.eliminarAlumno(alumno)}" />
-                    </h:column>
-                </h:dataTable>
+                        <p:commandButton value ="Editar" icon="pi pi-pencil" actionListener="#{indexController.llenarFormEditar(alumno)}" />
+                        <p:spacer width="10"/>
+                        <p:commandButton value ="Eliminar" icon="pi pi-trash" style="background-color: red " actionListener="#{indexController.eliminarAlumno(alumno)}" />
+                    </p:column>
+                </p:dataTable>
             </h:form>
-        </f:view>
+        </p:card>
+
 
     </h:body>
 </html>
