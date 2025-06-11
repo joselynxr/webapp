@@ -18,13 +18,18 @@
             <f:view>
                 <h:form id="alumnoForm">
                     <h:inputHidden id="id" value="#{indexController.alumno.id}"/>  
+                    <p:panelGrid columns="1" layout="grid">
                     <p:outputLabel value="Nombre"/>
                     <p:inputText id="nombre" value="#{indexController.alumno.nombre}" />
 
                     <p:outputLabel   value="Carnet"/>
                     <p:inputText id="carnet" value="#{indexController.alumno.carnet}" />
-
-                    <p:commandButton value ="Guardar" actionListener="#{indexController.guardarAlumno}" />
+                    </p:panelGrid>
+                    <p:panelGrid columns="4" layout="grid">
+                    
+                        <p:commandButton value ="Guardar" actionListener="#{indexController.guardarAlumno}" update="tablaAlumnos" />
+                    </p:panelGrid>
+                    
                 </h:form>
             </f:view>
         </p:card>
@@ -32,7 +37,11 @@
         <p:card style="margin: 5% 5% 5% 5%">
             <h1>Listado de Alumnos</h1>
             <h:form>
-                <p:dataTable value="#{indexController.alumnosList}" var="alumno">
+                <p:dataTable rows="5" paginator="true" paginatorPosition="bottom" 
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLink} {NextPageLink} {LastPageLink}{RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                             rowsPerPageTemplate="5,10{Show|'All'}"
+                             value="#{indexController.alumnosList}" var="alumno">
                     <p:column>
                         <f:facet name="header">ID</f:facet>
                         <span>#{alumno.id}</span>
