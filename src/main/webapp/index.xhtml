@@ -5,12 +5,13 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       
       
-    <h:head>
+      <h:head
+      xmlns:p="http://primefaces.org/ui">
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         
-        
+        <p:card>
         <f:view>
             <h:form id="alumnoForm">
                 <h:inputHidden id="id" value="#{indexController.alumno.id}"/>  
@@ -23,7 +24,7 @@
                 <h:commandButton value ="Guardar" actionListener="#{indexController.guardarAlumno}" />
             </h:form>
         </f:view>
-            
+            </p:card>
 
         
         Listado de Alumnos<f:view>
